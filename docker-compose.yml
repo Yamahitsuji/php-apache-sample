@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:8
+    volumes:
+      - ./.local/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: sample
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  php-apache:
+    depends_on:
+      - db
+    image: php:8.2-apache
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 8080:80
