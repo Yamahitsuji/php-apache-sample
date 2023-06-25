@@ -3,6 +3,7 @@ version: "3"
 services:
   db:
     image: mysql:8
+    container_name: php-db
     volumes:
       - ./.local/mysql:/var/lib/mysql
     environment:
@@ -15,6 +16,7 @@ services:
     depends_on:
       - db
     image: php:8.2-apache
+    container_name: php-sample
     volumes:
       - ./src:/var/www/html
     ports:
