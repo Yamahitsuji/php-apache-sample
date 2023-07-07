@@ -479,3 +479,5 @@ composer.phar
 
 # Dotenv
 .env
+
+.phpunit.result.cache
